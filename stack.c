@@ -71,7 +71,7 @@ int stack_is_empty(STACK *stack){
 
 int get_input(){
     int val;
-    printf("\n1- Push\n2- Pop\n\n");
+    printf("\n1- Push\n2- Pop\n3- exit\n\n");
     scanf("%d", &val);
     return val;
 }
@@ -85,8 +85,10 @@ void execute_command(STACK *stack, int input){
         case 2: //pop
             pop(stack);
             break;
-
+        
+        case 3:
         default:
+            exit(0);
             break;
     }
 }
