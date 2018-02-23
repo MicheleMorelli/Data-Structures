@@ -12,6 +12,7 @@ typedef struct {
 
 void push(STACK *stack, int value);
 int pop(STACK *stack);
+void clear_screen();
 void draw(STACK *stack);
 int get_input();
 void execute_command(STACK *stack, int input);
@@ -25,6 +26,7 @@ int main(){
 
     while (1){
         execute_command(&stack, get_input()); 
+        draw(&stack);
     }
 
     return 0;
@@ -71,12 +73,14 @@ int stack_is_empty(STACK *stack){
 
 int get_input(){
     int val;
-    printf("\n1- Push\n2- Pop\n3- exit\n\n");
+    printf("\n1- Push a random number\n2- Pop\n3- exit\n\n");
     scanf("%d", &val);
     return val;
 }
 
 void execute_command(STACK *stack, int input){
+    
+    clear_screen();
     switch(input){
         case 1: //push
             push(stack, rand() % 50 + 1); //using random nums for simplicity
@@ -90,5 +94,30 @@ void execute_command(STACK *stack, int input){
         default:
             exit(0);
             break;
+    }
+}
+
+void draw(STACK * stack){
+   // line 1 
+    printf(" __");
+    for (int i = 0; i <= stack->T; i++){
+        printf(" __");
+    }
+    // line 2
+    printf("\n|**|");
+    for (int i = 0; i <= stack->T; i++){
+        printf("%2d|", stack->st[i]);
+    }
+    // line 3
+    printf("\n|__|");
+    for (int i = 0; i <= stack->T; i++){
+        printf("__|");
+    }
+    printf("\n");
+}  
+
+void clear_screen(){
+    for(int i = 0; i< 120; i++){
+        printf("\n");
     }
 }
