@@ -98,21 +98,21 @@ void execute_command(STACK *stack, int input){
 }
 
 void draw(STACK * stack){
-   // line 1 
-    printf(" __");
-    for (int i = 0; i <= stack->T; i++){
+        // line 1 
         printf(" __");
-    }
-    // line 2
-    printf("\n|**|");
-    for (int i = 0; i <= stack->T; i++){
-        printf("%2d|", stack->st[i]);
-    }
-    // line 3
-    printf("\n|__|");
-    for (int i = 0; i <= stack->T; i++){
-        printf("__|");
-    }
+        for (int i = 1; i <= stack->T; i++){
+            printf(" __");
+        }
+        // line 2
+        printf("\n|**|");
+        for (int i = 1; i <= stack->T; i++){
+            printf("%2d|", stack->st[i]);
+        }
+        // line 3
+        printf("\n|__|");
+        for (int i = 1; i <= stack->T; i++){
+            printf("__|");
+        }
     printf("\n");
 }  
 
