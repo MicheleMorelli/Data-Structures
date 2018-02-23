@@ -14,6 +14,7 @@ void push(STACK *stack, int value);
 int pop(STACK *stack);
 void clear_screen();
 void draw(STACK *stack);
+void print_info(STACK *stack);
 int get_input();
 void execute_command(STACK *stack, int input);
 int overflow();
@@ -39,7 +40,7 @@ void push(STACK *stack, int value){
    else{
     stack->T++;
     stack->st[stack->T] = value;
-    printf("Pushed %d onto the stack.\nT is now %d.\n", value, stack->T);
+    printf("Pushed %d onto the stack.\n", value);
    }
 }
 
@@ -51,7 +52,7 @@ int pop(STACK *stack){
     else{
         returned_value = stack->st[stack->T];
         stack->T--;
-        printf("Popped %d from the stack.\nT is now %d.\n", returned_value, stack->T);
+        printf("Popped %d from the stack.\n", returned_value);
         return returned_value;
     }   
 
@@ -95,6 +96,7 @@ void execute_command(STACK *stack, int input){
             exit(0);
             break;
     }
+    print_info(stack);
 }
 
 void draw(STACK * stack){
@@ -120,4 +122,8 @@ void clear_screen(){
     for(int i = 0; i< 120; i++){
         printf("\n");
     }
+}
+
+void print_info(STACK *stack){
+    printf("The stack pointer T is now %d\nThe array's max size is %d\n\n",stack->T, STACK_SIZE);
 }
