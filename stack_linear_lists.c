@@ -1,3 +1,10 @@
+/**
+ * Michele Morelli
+ *
+ * Linear lists: C implementation of a stack 
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
