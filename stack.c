@@ -12,7 +12,7 @@ typedef struct {
 
 void push(STACK *stack, int value);
 int pop(STACK *stack);
-void draw();
+void draw(STACK *stack);
 int get_input();
 void execute_command(STACK *stack, int input);
 int overflow();
@@ -23,7 +23,7 @@ int main(){
     srand(time(NULL)); //pushing random numbers
     STACK_INIT(stack);
 
-    while (1==1){
+    while (1){
         execute_command(&stack, get_input()); 
     }
 
@@ -71,24 +71,22 @@ int stack_is_empty(STACK *stack){
 
 int get_input(){
     int val;
-    printf("1- Push\n2- Pop\n3- Show state\n");
+    printf("\n1- Push\n2- Pop\n\n");
     scanf("%d", &val);
     return val;
 }
 
 void execute_command(STACK *stack, int input){
     switch(input){
-        case 1:
+        case 1: //push
             push(stack, rand() % 50 + 1); //using random nums for simplicity
             break;
 
-        case 2:
+        case 2: //pop
             pop(stack);
             break;
 
-        case 3:
         default:
-            //draw();
             break;
     }
 }
